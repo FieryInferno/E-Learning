@@ -21,11 +21,13 @@
                         <tr>
                           <td>
                             <select name="jenis" class="form-control" style="font-weight: bold;background-color: #212121;color: #fff;">
-                              <option value="">- Pilih Jenis Ujian -</option>
-                              <?php $jenis = mysqli_query($con,"SELECT * FROM tb_jenisujian ORDER BY id_jenis ASC"); foreach ($jenis as $j) {
-                                echo "<option value='$j[id_jenis]'>$j[jenis_ujian]</option>"; 
-                              }
-                              ?> 
+                                <option value="">- Pilih Jenis Ujian -</option>
+                                <?php 
+                                  $jenis  = mysqli_query($con,"SELECT * FROM tb_jenisujian ORDER BY id_jenis ASC"); 
+                                  foreach ($jenis as $j) {
+                                    echo "<option value='$j[id_jenis]'>$j[jenis_ujian]</option>"; 
+                                  }
+                                ?> 
                             </select>
                           </td>
                           <td>
@@ -75,7 +77,6 @@
                                 $nokelas  = 1;
                                 $nilai    = mysqli_query($con, "SELECT * FROM kelas_ujian
                                   INNER JOIN tb_master_kelas ON kelas_ujian.id_kelas=tb_master_kelas.id_kelas
-                                  INNER JOIN tb_master_jurusan ON kelas_ujian.id_jurusan=tb_master_jurusan.id_jurusan
                                   WHERE kelas_ujian.id_ujian='$row[id_ujian]'");
                                 while($l=mysqli_fetch_array($nilai)){                               
                                 $siswa    = mysqli_query($con, "SELECT * FROM tb_siswa WHERE id_kelas='$l[id_kelas]'");
