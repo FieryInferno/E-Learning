@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Waktu pembuatan: 02 Bulan Mei 2021 pada 00.10
+-- Waktu pembuatan: 17 Bulan Mei 2021 pada 13.51
 -- Versi server: 10.1.32-MariaDB
 -- Versi PHP: 7.2.5
 
@@ -53,7 +53,8 @@ INSERT INTO `analisis` (`id_analisis`, `id_ujian`, `id_soal`, `id_siswa`, `jawab
 (10, 17, 159, 30, '1'),
 (11, 17, 160, 30, '1'),
 (12, 17, 161, 30, '1'),
-(13, 20, 162, 31, '1');
+(13, 20, 162, 31, '1'),
+(14, 21, 163, 31, '1');
 
 -- --------------------------------------------------------
 
@@ -110,7 +111,8 @@ INSERT INTO `kelas_ujian` (`id_klsujian`, `id_ujian`, `id_kelas`, `id_jurusan`, 
 (24, 14, 9, 2, 'Y'),
 (25, 14, 9, 2, 'Y'),
 (36, 17, 13, 6, 'Y'),
-(37, 20, 13, 0, 'Y');
+(37, 20, 13, 0, 'Y'),
+(38, 21, 13, 0, 'Y');
 
 -- --------------------------------------------------------
 
@@ -156,7 +158,8 @@ INSERT INTO `nilai` (`id_nilai`, `id_siswa`, `id_ujian`, `acak_soal`, `jawaban`,
 (11, 29, '15', '113,111,112', '0,0,0', '00:00:00', '08:08:30', 0, 3, 0, '0'),
 (12, 29, '17', '161,160,159', '1,1,3', '01:30:00', '10:07:56', 3, 0, 0, '100'),
 (13, 30, '17', '160,161,159', '1,1,1', '01:30:00', '17:34:46', 2, 0, 1, '66.66'),
-(14, 31, '20', '162', '1', '01:00:00', '06:01:49', 1, 0, 0, '100');
+(14, 31, '20', '162', '1', '01:00:00', '06:01:49', 1, 0, 0, '100'),
+(15, 31, '21', '163', '1', '01:00:00', '19:49:50', 1, 0, 0, '100');
 
 -- --------------------------------------------------------
 
@@ -171,16 +174,15 @@ CREATE TABLE `pesan` (
   `tanggal` date NOT NULL,
   `isi_pesan` longtext NOT NULL,
   `sudah_dibaca` enum('belum','sudah') NOT NULL,
-  `id_kelas` int(11) NOT NULL,
-  `id_jurusan` int(11) DEFAULT NULL
+  `id_kelas` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data untuk tabel `pesan`
 --
 
-INSERT INTO `pesan` (`id_pesan`, `id_pengirim`, `id_penerima`, `tanggal`, `isi_pesan`, `sudah_dibaca`, `id_kelas`, `id_jurusan`) VALUES
-(1, '123456', '551122', '2021-04-19', 'Hallo', 'belum', 13, 6);
+INSERT INTO `pesan` (`id_pesan`, `id_pengirim`, `id_penerima`, `tanggal`, `isi_pesan`, `sudah_dibaca`, `id_kelas`) VALUES
+(1, '123456', '551122', '2021-04-19', 'Hallo', 'belum', 13);
 
 -- --------------------------------------------------------
 
@@ -262,7 +264,8 @@ INSERT INTO `soal` (`id_soal`, `id_ujian`, `soal`, `pilihan_1`, `pilihan_2`, `pi
 (158, 16, '', '', '', '', '', '', 0, 'Y'),
 (160, 17, '<p style=\"margin-right:0cm; margin-left:0cm\"><span style=\"font-size:12pt\"><span style=\"font-family:&quot;Times New Roman&quot;,serif\"><b><span style=\"font-size:9.0pt\"><span style=\"font-family:&quot;Tahoma&quot;,&quot;sans-serif&quot;\">Kata sifat dalam bahasa inggris?</span></span></b></span></span></p>\r\n', '<p style=\"margin-right:0cm\"><span style=\"font-size:12pt\"><span style=\"tab-stops:list 36.0pt\"><span style=\"font-family:&quot;Times New Roman&quot;,serif\"><span style=\"font-size:10.0pt\"><span style=\"font-family:&quot;Tahoma&quot;,&quot;sans-serif&quot;\">Adjective</span></span></span></span></span></p>\r\n', '<p style=\"margin-right:0cm\"><span style=\"font-size:12pt\"><span style=\"tab-stops:list 36.0pt\"><span style=\"font-family:&quot;Times New Roman&quot;,serif\"><span style=\"font-size:10.0pt\"><span style=\"font-family:&quot;Tahoma&quot;,&quot;sans-serif&quot;\">noun</span></span></span></span></span></p>\r\n', '<p style=\"margin-right:0cm\"><span style=\"font-size:12pt\"><span style=\"tab-stops:list 36.0pt\"><span style=\"font-family:&quot;Times New Roman&quot;,serif\"><span style=\"font-size:10.0pt\"><span style=\"font-family:&quot;Tahoma&quot;,&quot;sans-serif&quot;\">pronoun</span></span></span></span></span></p>\r\n', '<p style=\"margin-right:0cm\"><span style=\"font-size:12pt\"><span style=\"tab-stops:list 36.0pt\"><span style=\"font-family:&quot;Times New Roman&quot;,serif\"><span style=\"font-size:10.0pt\"><span style=\"font-family:&quot;Tahoma&quot;,&quot;sans-serif&quot;\">adjunct</span></span></span></span></span></p>\r\n', '<p style=\"margin-right:0cm\"><span style=\"font-size:12pt\"><span style=\"tab-stops:list 36.0pt\"><span style=\"font-family:&quot;Times New Roman&quot;,serif\"><span style=\"font-size:10.0pt\"><span style=\"font-family:&quot;Tahoma&quot;,&quot;sans-serif&quot;\">Semua Benar</span></span></span></span></span></p>\r\n', 1, 'Y'),
 (161, 17, '<p style=\"margin-right:0cm; margin-left:0cm\"><span style=\"font-size:12pt\"><span style=\"font-family:&quot;Times New Roman&quot;,serif\"><b><span style=\"font-size:9.0pt\"><span style=\"font-family:&quot;Tahoma&quot;,&quot;sans-serif&quot;\">Apa arti noun?</span></span></b></span></span></p>\r\n', '<p style=\"margin-right:0cm\"><span style=\"font-size:12pt\"><span style=\"tab-stops:list 36.0pt\"><span style=\"font-family:&quot;Times New Roman&quot;,serif\"><span style=\"font-size:10.0pt\"><span style=\"font-family:&quot;Tahoma&quot;,&quot;sans-serif&quot;\">Kata benda</span></span></span></span></span></p>\r\n', '<p style=\"margin-right:0cm\"><span style=\"font-size:12pt\"><span style=\"tab-stops:list 36.0pt\"><span style=\"font-family:&quot;Times New Roman&quot;,serif\"><span style=\"font-size:10.0pt\"><span style=\"font-family:&quot;Tahoma&quot;,&quot;sans-serif&quot;\">Kata Bijak</span></span></span></span></span></p>\r\n', '<p style=\"margin-right:0cm\"><span style=\"font-size:12pt\"><span style=\"tab-stops:list 36.0pt\"><span style=\"font-family:&quot;Times New Roman&quot;,serif\"><span style=\"font-size:10.0pt\"><span style=\"font-family:&quot;Tahoma&quot;,&quot;sans-serif&quot;\">Kata Kana</span></span></span></span></span></p>\r\n', '<p style=\"margin-right:0cm\"><span style=\"font-size:12pt\"><span style=\"tab-stops:list 36.0pt\"><span style=\"font-family:&quot;Times New Roman&quot;,serif\"><span style=\"font-size:10.0pt\"><span style=\"font-family:&quot;Tahoma&quot;,&quot;sans-serif&quot;\">Kata Sifat</span></span></span></span></span></p>\r\n', '<p style=\"margin-right:0cm\"><span style=\"font-size:12pt\"><span style=\"tab-stops:list 36.0pt\"><span style=\"font-family:&quot;Times New Roman&quot;,serif\"><span style=\"font-size:10.0pt\"><span style=\"font-family:&quot;Tahoma&quot;,&quot;sans-serif&quot;\">Kata-kata</span></span></span></span></span></p>\r\n', 1, 'Y'),
-(162, 20, '<p>asdfdf</p>\r\n', '<p>adfdf</p>\r\n', '<p>fgdfg</p>\r\n', '<p>fgdfg</p>\r\n', '<p>dfgf</p>\r\n', '<p>fgdfg</p>\r\n', 1, 'Y');
+(162, 20, '<p>asdfdf</p>\r\n', '<p>adfdf</p>\r\n', '<p>fgdfg</p>\r\n', '<p>fgdfg</p>\r\n', '<p>dfgf</p>\r\n', '<p>fgdfg</p>\r\n', 1, 'Y'),
+(163, 21, '<p>siapa?</p>\r\n', '<p>a</p>\r\n', '<p>a</p>\r\n', '<p>a</p>\r\n', '<p>a</p>\r\n', '<p>a</p>\r\n', 1, 'Y');
 
 -- --------------------------------------------------------
 
@@ -311,7 +314,7 @@ CREATE TABLE `tb_guru` (
 INSERT INTO `tb_guru` (`id_guru`, `nik`, `nama_guru`, `email`, `password`, `foto`, `status`, `date_created`, `confirm`) VALUES
 (11, '551122', 'James B.A.', 'James14@gmail.com', 'dea4b01d76321883aa4d97fddc5614b3c91c2c0e', '1616115173-gedung.jpg', 'Y', '2021-03-19', 'Yes'),
 (12, '331122', 'Rico M.T.', 'Rico98@gmail.com', 'a66853103d30f8ca51d332daf9cce2d3aa68c264', NULL, 'Y', '2021-03-19', 'Yes'),
-(13, '12345678', 'M. Bagas Setia Permana', 'bagassetia271@gmail.com', '7c222fb2927d828af22f592134e8932480637c0d', '1619686507-1597983684056.jpg', 'Y', '2021-04-29', 'Yes');
+(13, '12345678', 'M. Bagas Setia Permana', 'bagassetia271@gmail.com', '7c222fb2927d828af22f592134e8932480637c0d', '1621245829-Capture.PNG', 'Y', '2021-04-29', 'Yes');
 
 -- --------------------------------------------------------
 
@@ -695,6 +698,7 @@ INSERT INTO `ujian` (`id_ujian`, `judul`, `tanggal`, `waktu`, `jml_soal`, `acak`
 (14, 'cisco', '2021-03-16', '01:20:00', 1, 'acak', 0, 1, 6, 3, 1),
 (17, 'Topic 1 ', '2021-04-19', '01:30:00', 3, 'acak', 0, 2, 11, 9, 1),
 (18, '', '2021-04-19', '01:00:00', 3, 'acak', 0, 2, 11, 9, 1),
+(21, 'ujian a', '2021-05-17', '01:00:00', 1, 'acak', 0, 2, 13, 9, NULL),
 (20, 'lkjhgf', '2021-05-02', '01:00:00', 10, 'acak', 0, 2, 13, 9, NULL);
 
 -- --------------------------------------------------------
@@ -892,7 +896,7 @@ ALTER TABLE `ujian_essay`
 -- AUTO_INCREMENT untuk tabel `analisis`
 --
 ALTER TABLE `analisis`
-  MODIFY `id_analisis` int(100) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
+  MODIFY `id_analisis` int(100) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
 
 --
 -- AUTO_INCREMENT untuk tabel `kelas_tugas`
@@ -904,7 +908,7 @@ ALTER TABLE `kelas_tugas`
 -- AUTO_INCREMENT untuk tabel `kelas_ujian`
 --
 ALTER TABLE `kelas_ujian`
-  MODIFY `id_klsujian` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=38;
+  MODIFY `id_klsujian` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=39;
 
 --
 -- AUTO_INCREMENT untuk tabel `kelas_ujianessay`
@@ -916,19 +920,19 @@ ALTER TABLE `kelas_ujianessay`
 -- AUTO_INCREMENT untuk tabel `nilai`
 --
 ALTER TABLE `nilai`
-  MODIFY `id_nilai` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
+  MODIFY `id_nilai` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
 
 --
 -- AUTO_INCREMENT untuk tabel `pesan`
 --
 ALTER TABLE `pesan`
-  MODIFY `id_pesan` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id_pesan` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT untuk tabel `soal`
 --
 ALTER TABLE `soal`
-  MODIFY `id_soal` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=163;
+  MODIFY `id_soal` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=164;
 
 --
 -- AUTO_INCREMENT untuk tabel `tb_admin`
@@ -1036,7 +1040,7 @@ ALTER TABLE `tugas_siswa`
 -- AUTO_INCREMENT untuk tabel `ujian`
 --
 ALTER TABLE `ujian`
-  MODIFY `id_ujian` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
+  MODIFY `id_ujian` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
 
 --
 -- AUTO_INCREMENT untuk tabel `ujian_essay`
