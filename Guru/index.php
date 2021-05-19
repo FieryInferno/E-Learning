@@ -249,10 +249,10 @@
                 }elseif ($act=='activate') {
                   include 'modul/materi/activate.php';
                 }
-              } elseif ($page=='ujian') {
+              } elseif ($page == 'ujian') {
                 if ($act=='') {
                   include 'modul/ujian/data_ujian.php';
-                } elseif ($act=='add') {
+                } elseif ($act  == 'add') {
                   include 'modul/ujian/add_ujian.php';
                 } elseif ($act=='addkelas') {
                   include 'modul/ujian/add_kelas.php';
@@ -295,13 +295,13 @@
                 } elseif ($act=='delkelase') {
                   include 'modul/ujian/essay/del_kelasujian.php';
                 }
-              } elseif ($page=='nilai') {
-                if ($act=='') {
+              } elseif ($page == 'nilai') {
+                if ($act  == '') {
                   include 'modul/nilai/data_nilai.php';
-                }elseif ($act=='view') {
+                }elseif ($act == 'view') {
                   include 'modul/nilai/view_nilaikelas.php';
                 }
-              } elseif ($page=='profil') {
+              } elseif ($page == 'profil') {
                 if ($act=='') {
                   include 'modul/profil/data_profil.php';
                 }

@@ -12,7 +12,7 @@
               <h4 class="card-title">Pengaturan Ujian</h4>
                 <form class="forms-sample" action="?page=proses" method="post" enctype="multipart/form-data">
                   <input type="hidden" name="id_guru" value="<?=$sesi; ?>">
-                  <div class="form-group">
+                  <!-- <div class="form-group">
                     <label for="jenis">Jenis Ujian *</label>
                     <select class="form-control" id="jenis" name="id_jenis" style="font-weight: bold;background-color: #212121;color: #fff;" required>
                       <option value=''>-- Pilih --</option>
@@ -23,7 +23,7 @@
                         }
                       ?>
                     </select>
-                  </div>
+                  </div> -->
 
                   <div class="form-group">
                     <label for="mapel">Mata Pelajaran *</label>

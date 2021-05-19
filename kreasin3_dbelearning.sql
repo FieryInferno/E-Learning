@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Waktu pembuatan: 17 Bulan Mei 2021 pada 13.51
+-- Waktu pembuatan: 19 Bulan Mei 2021 pada 08.49
 -- Versi server: 10.1.32-MariaDB
 -- Versi PHP: 7.2.5
 
@@ -680,7 +680,7 @@ CREATE TABLE `ujian` (
   `jml_soal` int(30) NOT NULL,
   `acak` varchar(100) NOT NULL,
   `tipe` int(1) NOT NULL,
-  `id_jenis` int(11) NOT NULL,
+  `id_jenis` int(11) DEFAULT NULL,
   `id_guru` int(11) NOT NULL,
   `id_mapel` int(11) NOT NULL,
   `id_semester` int(11) DEFAULT NULL
@@ -926,7 +926,7 @@ ALTER TABLE `nilai`
 -- AUTO_INCREMENT untuk tabel `pesan`
 --
 ALTER TABLE `pesan`
-  MODIFY `id_pesan` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id_pesan` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT untuk tabel `soal`

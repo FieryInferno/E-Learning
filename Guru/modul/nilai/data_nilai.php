@@ -20,12 +20,13 @@
                       <thead>
                         <tr>
                           <td>
-                            <select name="jenis" class="form-control" style="font-weight: bold;background-color: #212121;color: #fff;">
-                                <option value="">- Pilih Jenis Ujian -</option>
+                            <select name="kelas" class="form-control" style="font-weight: bold;background-color: #212121;color: #fff;">
+                                <option value="">- Pilih Kelas -</option>
                                 <?php 
-                                  $jenis  = mysqli_query($con,"SELECT * FROM tb_jenisujian ORDER BY id_jenis ASC"); 
+                                  // $jenis  = mysqli_query($con,"SELECT * FROM tb_jenisujian ORDER BY id_jenis ASC");
+                                  $jenis  = mysqli_query($con, "SELECT * FROM tb_master_kelas ORDER BY kelas ASC"); 
                                   foreach ($jenis as $j) {
-                                    echo "<option value='$j[id_jenis]'>$j[jenis_ujian]</option>"; 
+                                    echo "<option value='$j[id_kelas]'>$j[kelas]</option>"; 
                                   }
                                 ?> 
                             </select>
@@ -44,14 +45,14 @@
               <?php 
                 if (isset($_POST['filter'])) {
                   // TAMPILKAN DATA
-                  if ($_POST['jenis'] == '') {
+                  if ($_POST['kelas'] == '') {
                     echo "Tidak Ada data yg diplih";
                   } else { ?>
                     <table id='data' class='table table-bordered table-striped'>
                       <thead>
                         <tr>
                           <th>No</th> 
-                          <th>Jenis Ujian</th>
+                          <!-- <th>Jenis Ujian</th> -->
                           <th>Judul</th>
                           <th>Mata Pelajaran</th>
                           <th>Tanggal Ujian</th>
@@ -62,13 +63,16 @@
                         <?php 
                           $no       = 1;
                           $sqlrole  = mysqli_query($con,"SELECT * FROM ujian
-                            INNER JOIN tb_jenisujian ON ujian.id_jenis=tb_jenisujian.id_jenis
+                            -- INNER JOIN tb_jenisujian ON ujian.id_jenis=tb_jenisujian.id_jenis
                             INNER JOIN tb_master_mapel ON ujian.id_mapel=tb_master_mapel.id_mapel
-                            WHERE ujian.id_guru='$sesi' AND ujian.id_jenis='$_POST[jenis]' ORDER BY id_ujian DESC");
+                            INNER JOIN kelas_ujian ON ujian.id_ujian = kelas_ujian.id_ujian
+                            WHERE ujian.id_guru='$sesi' AND kelas_ujian.id_kelas='$_POST[kelas]' 
+                            ORDER BY ujian.id_ujian DESC"
+                            );
                           foreach ($sqlrole as $row) { ?>  
                             <tr>
                               <td><b><?=$no++ ?>.</b></td>
-                              <td><label class="badge badge-info"><?=$row['jenis_ujian']; ?></label></td>
+                              <!-- <td><label class="badge badge-info"><?=$row['jenis_ujian']; ?></label></td> -->
                               <td><?=$row['judul']; ?> </td>
                               <td><?=$row['mapel']; ?> </td>
                               <td><b><?=date('d-F-Y',strtotime($row['tanggal'])); ?></b></td>

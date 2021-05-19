@@ -157,7 +157,8 @@
       }
     }
   } elseif (isset($_POST['ujianSave'])) {
-    $sql  = mysqli_query($con,"INSERT INTO ujian VALUES(NULL,'$_POST[judul]','$_POST[tgl]','$_POST[jam]:$_POST[menit]:00','$_POST[jumlah]','$_POST[acak]','0','$_POST[id_jenis]','$_POST[id_guru]','$_POST[id_mapel]', NULL)");  	
+    // $sql  = mysqli_query($con,"INSERT INTO ujian VALUES(NULL,'$_POST[judul]','$_POST[tgl]','$_POST[jam]:$_POST[menit]:00','$_POST[jumlah]','$_POST[acak]','0','$_POST[id_jenis]','$_POST[id_guru]','$_POST[id_mapel]', NULL)");  
+    $sql  = mysqli_query($con,"INSERT INTO ujian VALUES(NULL,'$_POST[judul]','$_POST[tgl]','$_POST[jam]:$_POST[menit]:00','$_POST[jumlah]','$_POST[acak]','0', NULL,'$_POST[id_guru]','$_POST[id_mapel]', NULL)");  	
     if ($sql) {
       echo "
         <script type='text/javascript'>
